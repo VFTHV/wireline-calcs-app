@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
-import { View, FlatList, StyleSheet, Text } from 'react-native';
+import {
+  View,
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 
 export default function FlatListAndMap() {
   const [people, setPeople] = useState([
-    { name: 'shaun', id: '1' },
+    { name: 'zhenya', id: '1' },
     { name: 'yoshi', id: '2' },
     { name: 'mario', id: '3' },
     { name: 'luigi', id: '4' },
@@ -12,13 +18,21 @@ export default function FlatListAndMap() {
     { name: 'bowser', id: '7' },
   ]);
 
+  const pressHandler = (id: string) => {
+    setPeople((prevPeople) => prevPeople.filter((person) => person.id !== id));
+  };
+
   return (
     <View>
       <FlatList
         numColumns={2}
         keyExtractor={(item) => item.id}
         data={people}
-        renderItem={({ item }) => <Text style={styles.item}>{item.name}</Text>}
+        renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => pressHandler(item.id)}>
+            <Text style={styles.item}>{item.name}</Text>
+          </TouchableOpacity>
+        )}
       />
 
       {/* <ScrollView>
