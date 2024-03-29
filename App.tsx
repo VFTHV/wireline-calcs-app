@@ -1,11 +1,29 @@
-import { StyleSheet, View } from 'react-native';
-import TextAndInput from './TextAndInput';
-import FlatListAndMap from './FlatListAndMap';
+import { FlatList, StyleSheet, View, Text } from 'react-native';
+import TextAndInput from './components/TextAndInput';
+import FlatListAndMap from './components/FlatListAndMap';
+import { useState } from 'react';
+import Header from './components/Header';
 
 export default function App() {
+  const [todos, setTodos] = useState([
+    { text: 'buy coffee', key: '1' },
+    { text: 'create an app', key: '2' },
+    { text: 'play on the switch', key: '3' },
+  ]);
+
   return (
     <View style={styles.container}>
-      <FlatListAndMap />
+      {/* header */}
+      <Header />
+      <View style={styles.content}>
+        {/* to do form */}
+        <View style={styles.list}>
+          <FlatList
+            data={todos}
+            renderItem={({ item }) => <Text>{item.text}</Text>}
+          />
+        </View>
+      </View>
     </View>
   );
 }
@@ -14,9 +32,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingTop: 40,
-    paddingHorizontal: 20,
-    // alignItems: 'center',
-    // justifyContent: 'center',
+  },
+  content: {
+    padding: 40,
+  },
+  list: {
+    marginTop: 20,
   },
 });
