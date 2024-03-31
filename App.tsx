@@ -3,6 +3,8 @@ import { Text, View, StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import ToDoApp from './components/ToDoApp';
+import { NavItem } from './components/NavItem';
+import { styleVariables as st } from './styles/global';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -22,13 +24,16 @@ export default function App() {
     return null;
   }
 
-  return <ToDoApp />;
+  return (
+    <View style={styles.container}>
+      <NavItem />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding: st.spacingDefault,
+    paddingTop: 40,
   },
 });
