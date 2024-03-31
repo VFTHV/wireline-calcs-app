@@ -1,8 +1,7 @@
 import { useCallback } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import ToDoApp from './components/ToDoApp';
 import { NavItem } from './components/NavItem';
 import { styleVariables as st } from './styles/global';
 
@@ -25,15 +24,16 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <NavItem />
+    <View style={container} onLayout={onLayoutRootView}>
+      <NavItem fontsLoaded={fontsLoaded}>Weak Point Calculator</NavItem>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+const { container } = StyleSheet.create({
   container: {
     padding: st.spacingDefault,
-    paddingTop: 40,
+    paddingTop: 50,
+    backgroundColor: st.primaryColor,
   },
 });

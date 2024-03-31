@@ -19,4 +19,5 @@ export const styleVariables = {
   gray: 'rgb(184, 177, 169)',
   black: 'black',
   spacingDefault: 16,
+  fontSizePri: 19,
 };
