@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { View, StyleSheet, Text, Button } from 'react-native';
+import { View, StyleSheet, Text, Button, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { styleVariables as st } from '../styles/global';
@@ -20,16 +20,17 @@ export const NavItem: FC<NavItemProps> = ({
   to,
 }) => {
   return (
-    <View style={navitem}>
-      {icon ? (
-        icon
-      ) : (
-        <Ionicons name="calculator-outline" size={24} color="black" />
-      )}
-      <Text style={navItemText}>{children}</Text>
-      <Button title={`Go to`} onPress={() => navigation.navigate(to)} />
-      <Entypo name="chevron-right" size={24} color="black" />
-    </View>
+    <TouchableOpacity onPress={() => navigation.navigate(to)}>
+      <View style={navitem}>
+        {icon ? (
+          icon
+        ) : (
+          <Ionicons name="calculator-outline" size={24} color="white" />
+        )}
+        <Text style={navItemText}>{children}</Text>
+        <Entypo name="chevron-right" size={24} color="white" />
+      </View>
+    </TouchableOpacity>
   );
 };
 
@@ -41,10 +42,11 @@ const { navitem, navItemText } = StyleSheet.create({
     justifyContent: 'space-between',
     borderBottomWidth: 2,
     borderBottomColor: st.darkColor,
+    backgroundColor: st.primaryColor,
   },
   navItemText: {
     fontFamily: 'Outfit-Light',
     fontSize: st.fontSizePri,
-    color: 'black',
+    color: 'white',
   },
 });
