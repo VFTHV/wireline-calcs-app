@@ -1,9 +1,8 @@
 import { useCallback } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import { NavItem } from './components/NavItem';
-import { styleVariables as st, styleVariables } from './styles/global';
+import { styleVariables as st } from './styles/global';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import NavPage from './pages/NavPage';
@@ -19,9 +18,7 @@ import CBL from './pages/CBL';
 import FluidVelocity from './pages/FluidVelocity';
 import Feedback from './pages/Feedback';
 import Disclaimer from './pages/Disclaimer';
-import { Entypo } from '@expo/vector-icons';
-import { HeaderBackButton } from '@react-navigation/elements';
-import { useNavigation } from '@react-navigation/native';
+
 import { stackScreenOptions } from './styles/global';
 
 SplashScreen.preventAutoHideAsync();
