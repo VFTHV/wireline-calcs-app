@@ -27,7 +27,7 @@ export default function NavPage({ navigation }: NavPageProps) {
     <ScrollView>
       <View>
         <NavItem navigation={navigation} to="Units">
-          Choose Units
+          Choose Measurement Units
         </NavItem>
         <NavItem navigation={navigation} to="WeakPoint">
           Weak Point
@@ -36,22 +36,22 @@ export default function NavPage({ navigation }: NavPageProps) {
           Weight Bar
         </NavItem>
         <NavItem navigation={navigation} to="Stretch">
-          Stretch
+          Cable Stretch Calculator
         </NavItem>
         <NavItem navigation={navigation} to="KeySeat">
-          KeySeat
+          Cable Stuck Depth {`(Keyseat)`}
         </NavItem>
         <NavItem navigation={navigation} to="TensionAtDepth">
-          Tension At Depth
+          Max. Tension at Depth
         </NavItem>
         <NavItem navigation={navigation} to="CsgSpecs">
-          Casing Specs
+          Casing/Tubing Specs
         </NavItem>
         <NavItem navigation={navigation} to="TempCorrLength">
           Temp. Corrected Length
         </NavItem>
         <NavItem navigation={navigation} to="CBL">
-          CBL Calcs
+          Cement Bond Log Calcs
         </NavItem>
         <NavItem navigation={navigation} to="FluidVelocity">
           Fluid Velocity
