@@ -45,7 +45,11 @@ export default function App() {
     <View style={container} onLayout={onLayoutRootView}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="NavPage">
-          <Stack.Screen name="NavPage" component={NavPage} />
+          <Stack.Screen
+            name="NavPage"
+            component={NavPage}
+            options={{ headerShown: false }}
+          />
           <Stack.Screen
             name="Units"
             component={UnitsPage}
