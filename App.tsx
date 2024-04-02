@@ -1,37 +1,17 @@
-import { useCallback } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
+import { StyleSheet } from 'react-native';
 import { styleVariables as st } from './styles/global';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Pages } from './pages';
-
 import { stackScreenOptions } from './styles/global';
-
-SplashScreen.preventAutoHideAsync();
+import FontsLoadedContainer from './components/FontsLoadedContainer';
 
 export default function App() {
-  const [fontsLoaded, fontError] = useFonts({
-    'Outfit-Bold': require('./assets/fonts/Outfit-Bold.ttf'),
-    'Outfit-Light': require('./assets/fonts/Outfit-Light.ttf'),
-  });
-
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded || fontError) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded, fontError]);
-
-  if (!fontsLoaded && !fontError) {
-    return null;
-  }
-
   const Stack = createNativeStackNavigator();
 
   return (
-    <View style={container} onLayout={onLayoutRootView}>
+    <FontsLoadedContainer>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="NavPage">
           <Stack.Screen
@@ -110,7 +90,7 @@ export default function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
-    </View>
+    </FontsLoadedContainer>
   );
 }
 
