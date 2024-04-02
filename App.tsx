@@ -5,19 +5,8 @@ import * as SplashScreen from 'expo-splash-screen';
 import { styleVariables as st } from './styles/global';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import NavPage from './pages/NavPage';
-import WeakPoint from './pages/WeakPoint';
-import UnitsPage from './pages/UnitsPage';
-import WeightBar from './pages/WeightBar';
-import Stretch from './pages/Stretch';
-import KeySeat from './pages/KeySeat';
-import TensionAtDepth from './pages/TensionAtDepth';
-import CsgSpecs from './pages/CsgSpecs';
-import TempCorrectedLength from './pages/TempCorrectedLength';
-import CBL from './pages/CBL';
-import FluidVelocity from './pages/FluidVelocity';
-import Feedback from './pages/Feedback';
-import Disclaimer from './pages/Disclaimer';
+
+import { Pages } from './pages';
 
 import { stackScreenOptions } from './styles/global';
 
@@ -47,12 +36,12 @@ export default function App() {
         <Stack.Navigator initialRouteName="NavPage">
           <Stack.Screen
             name="NavPage"
-            component={NavPage}
+            component={Pages.NavPage}
             options={{ headerShown: false }}
           />
           <Stack.Screen
             name="Units"
-            component={UnitsPage}
+            component={Pages.UnitsPage}
             options={{
               ...stackScreenOptions,
               title: 'Choose Measurement Units',
@@ -60,17 +49,17 @@ export default function App() {
           />
           <Stack.Screen
             name="WeakPoint"
-            component={WeakPoint}
+            component={Pages.WeakPoint}
             options={{ ...stackScreenOptions, title: 'Weak Point' }}
           />
           <Stack.Screen
             name="WeightBar"
-            component={WeightBar}
+            component={Pages.WeightBar}
             options={{ ...stackScreenOptions, title: 'Weight Bar' }}
           />
           <Stack.Screen
             name="Stretch"
-            component={Stretch}
+            component={Pages.Stretch}
             options={{
               ...stackScreenOptions,
               title: 'Cable Stretch Calculator',
@@ -78,7 +67,7 @@ export default function App() {
           />
           <Stack.Screen
             name="KeySeat"
-            component={KeySeat}
+            component={Pages.KeySeat}
             options={{
               ...stackScreenOptions,
               title: 'Cable Stuck Depth (Keyseat)',
@@ -86,37 +75,37 @@ export default function App() {
           />
           <Stack.Screen
             name="TensionAtDepth"
-            component={TensionAtDepth}
+            component={Pages.TensionAtDepth}
             options={{ ...stackScreenOptions, title: 'Max. Tension at Depth' }}
           />
           <Stack.Screen
             name="CsgSpecs"
-            component={CsgSpecs}
+            component={Pages.CsgSpecs}
             options={{ ...stackScreenOptions, title: 'Casing/Tubing Specs' }}
           />
           <Stack.Screen
             name="TempCorrLength"
-            component={TempCorrectedLength}
+            component={Pages.TempCorrectedLength}
             options={{ ...stackScreenOptions, title: 'Temp. Corrected Length' }}
           />
           <Stack.Screen
             name="CBL"
-            component={CBL}
+            component={Pages.CBL}
             options={{ ...stackScreenOptions, title: 'Cement Bond Log Calcs' }}
           />
           <Stack.Screen
             name="FluidVelocity"
-            component={FluidVelocity}
+            component={Pages.FluidVelocity}
             options={{ ...stackScreenOptions, title: 'Fluid Velocity' }}
           />
           <Stack.Screen
             name="Feedback"
-            component={Feedback}
+            component={Pages.Feedback}
             options={{ ...stackScreenOptions }}
           />
           <Stack.Screen
             name="Disclaimer"
-            component={Disclaimer}
+            component={Pages.Disclaimer}
             options={{ ...stackScreenOptions, title: 'Weak Point' }}
           />
         </Stack.Navigator>
