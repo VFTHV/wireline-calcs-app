@@ -1,11 +1,9 @@
-import { StyleSheet } from 'react-native';
-import { styleVariables as st } from './styles/global';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import { Pages } from './pages';
 import { stackScreenOptions } from './styles/global';
 import FontsLoadedContainer from './components/FontsLoadedContainer';
+import { styleVariables as st } from './styles/global';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -13,7 +11,10 @@ export default function App() {
   return (
     <FontsLoadedContainer>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="NavPage">
+        <Stack.Navigator
+          initialRouteName="NavPage"
+          screenOptions={{ contentStyle: { backgroundColor: st.primaryColor } }}
+        >
           <Stack.Screen
             name="NavPage"
             component={Pages.NavPage}
@@ -93,12 +94,3 @@ export default function App() {
     </FontsLoadedContainer>
   );
 }
-
-const { container } = StyleSheet.create({
-  container: {
-    padding: st.spacingDefault,
-    paddingTop: 50,
-    backgroundColor: st.primaryColor,
-    flex: 1,
-  },
-});
