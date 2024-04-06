@@ -1,9 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native';
+import { CableSelector } from '../components/CableSelector';
 
 export default function WeakPoint() {
+  console.log('hello');
   return (
     <View>
-      <Text>WeakPoint</Text>
+      <CableSelector />
+      <Text>WeakPointdd</Text>
     </View>
   );
 }

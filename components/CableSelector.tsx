@@ -1,3 +1,7 @@
+import { StyleSheet, Text, View } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
+import { styleVariables as st } from '../styles/global';
+
 import { ChangeEvent, FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { StoreState, changeCable } from '../store';
@@ -7,25 +11,17 @@ export const CableSelector: FC = () => {
   const dispatch = useDispatch();
   const { currentCable } = useSelector((state: StoreState) => state.weakPoint);
 
-  const handleCableChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const selectedCable = cablesData.find(
-      (cable) => cable.type === e.target.value
-    );
+  const handleCableChange = (itemValue: string) => {
+    const selectedCable = cablesData.find((cable) => cable.type === itemValue);
     if (selectedCable) {
       dispatch(changeCable(selectedCable));
     }
   };
 
   return (
-    <div className="input-group">
-      <label
-        htmlFor="cable"
-        id="choose-cable"
-        aria-label="Choose wireline cable"
-      >
-        Choose Cable Type:
-      </label>
-      <select
+    <View style={inputGroup}>
+      <Text>Choose Cable Type:</Text>
+      {/* <select
         className="input-item"
         id="cable"
         name="cable"
@@ -43,7 +39,29 @@ export const CableSelector: FC = () => {
             </option>
           );
         })}
-      </select>
-    </div>
+      </select> */}
+      <Picker
+        selectedValue={currentCable.type}
+        onValueChange={handleCableChange}
+      >
+        {cablesData.map((cable) => {
+          return (
+            <Picker.Item
+              key={cable.type}
+              value={cable.type}
+              label={cable.type}
+            />
+          );
+        })}
+      </Picker>
+    </View>
   );
 };
+
+const { inputGroup } = StyleSheet.create({
+  inputGroup: {
+    margin: st.spacingDefault,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+});
