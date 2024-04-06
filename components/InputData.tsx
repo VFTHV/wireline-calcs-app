@@ -55,7 +55,8 @@ export const InputData = ({
 const { inputGroup, labelText, inputValues, inputItem, units, errorMessage } =
   StyleSheet.create({
     inputGroup: {
-      margin: st.spacingDefault,
+      marginHorizontal: st.spacingDefault,
+      marginVertical: st.spacingDefault / 2,
       display: 'flex',
       flexDirection: 'column',
     },
