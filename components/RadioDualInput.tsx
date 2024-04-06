@@ -15,7 +15,7 @@ export const RadioDualInput = ({
   return (
     <View style={radioContainer}>
       <View style={radioItems}>
-        <View style={[left]}>
+        <View style={[radioItem, left]}>
           {/* <input
           type="radio"
           name="option1"
@@ -24,9 +24,9 @@ export const RadioDualInput = ({
           checked={currentValue === values[0]}
         /> */}
           {/* <Text style={[left, labelContainer]}>{values[0].toUpperCase()}</Text> */}
-          <Text style={[labelContainer]}>FLUID</Text>
+          <Text>FLUID</Text>
         </View>
-        <View style={[right]}>
+        <View style={[radioItem, right]}>
           {/* <input
           type="radio"
           name="option2"
@@ -34,14 +34,14 @@ export const RadioDualInput = ({
           onChange={onChange}
           checked={currentValue === values[1]}
         /> */}
-          <Text style={[labelContainer, right]}>GAS</Text>
+          <Text>GAS</Text>
         </View>
       </View>
     </View>
   );
 };
 
-const { radioContainer, radioItems, left, labelContainer, right } =
+const { radioContainer, radioItems, left, radioItem, right } =
   StyleSheet.create({
     radioContainer: {
       marginVertical: st.spacingDefault,
@@ -54,25 +54,21 @@ const { radioContainer, radioItems, left, labelContainer, right } =
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center',
-      borderWidth: 1,
-      borderColor: 'red',
     },
     left: {
-      paddingVertical: 10,
-      backgroundColor: st.secondaryColor,
       borderTopLeftRadius: 5,
       borderBottomLeftRadius: 5,
-      flex: 1,
     },
-    labelContainer: {},
     right: {
-      paddingVertical: 10,
-      backgroundColor: st.secondaryColor,
       borderTopRightRadius: 5,
       borderBottomRightRadius: 5,
-      flex: 1,
+    },
+    radioItem: {
+      paddingVertical: 5,
+      backgroundColor: st.secondaryColor,
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+      flex: 1,
     },
   });
