@@ -1,47 +1,52 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { styleVariables as st } from '../styles/global';
 
 interface RadioDualInputProps {
   values: [string, string];
-  onClick: () => void;
+  onPress: (value: string) => void;
   currentValue: string;
 }
 
 export const RadioDualInput = ({
   values,
-  onClick,
+  onPress,
   currentValue,
 }: RadioDualInputProps) => {
+  const renderCurrentValueStyle = (value: string) => {
+    const currentValueStyle = {
+      backgroundColor: st.lightColor,
+      color: st.secondaryColor,
+      fontFamily: 'Outfit-Bold',
+    };
+    return value === currentValue ? currentValueStyle : {};
+  };
+
   return (
     <View style={radioContainer}>
       <View style={radioItems}>
-        <View style={[radioItem, left]}>
-          {/* <input
-          type="radio"
-          name="option1"
-          value={values[0]}
-          onChange={onChange}
-          checked={currentValue === values[0]}
-        /> */}
-          {/* <Text style={[left, labelContainer]}>{values[0].toUpperCase()}</Text> */}
-          <Text>FLUID</Text>
-        </View>
-        <View style={[radioItem, right]}>
-          {/* <input
-          type="radio"
-          name="option2"
-          value={values[1]}
-          onChange={onChange}
-          checked={currentValue === values[1]}
-        /> */}
-          <Text>GAS</Text>
-        </View>
+        <TouchableOpacity
+          onPress={() => onPress(values[0])}
+          style={[radioItem, left, renderCurrentValueStyle(values[0])]}
+        >
+          <Text style={[radioText, renderCurrentValueStyle(values[0])]}>
+            {values[0].toUpperCase()}
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => onPress(values[1])}
+          style={[radioItem, right, renderCurrentValueStyle(values[1])]}
+        >
+          <Text style={[radioText, renderCurrentValueStyle(values[1])]}>
+            {values[1].toUpperCase()}
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-const { radioContainer, radioItems, left, radioItem, right } =
+const { radioContainer, radioItems, left, radioItem, right, radioText } =
   StyleSheet.create({
     radioContainer: {
       marginVertical: st.spacingDefault,
@@ -50,7 +55,7 @@ const { radioContainer, radioItems, left, radioItem, right } =
       justifyContent: 'center',
     },
     radioItems: {
-      width: '50%',
+      width: '60%',
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center',
@@ -70,5 +75,10 @@ const { radioContainer, radioItems, left, radioItem, right } =
       justifyContent: 'center',
       alignItems: 'center',
       flex: 1,
+    },
+    radioText: {
+      fontFamily: 'Outfit-Light',
+      fontSize: st.fontSizePri,
+      color: st.primaryColor,
     },
   });

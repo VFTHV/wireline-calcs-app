@@ -5,6 +5,13 @@ import { CableManualEntrance } from '../components/CableManualEntrance';
 import { useSelector, useDispatch } from 'react-redux';
 import { StoreState } from '../store';
 import { RadioDualInput } from '../components/RadioDualInput';
+import {
+  changeToolWeight,
+  changeDepth,
+  changeEnvironment,
+} from '../store/slices/weakPointSlice';
+import { useWeakPointCalc } from '../logics/useWeakPointCalc';
+import { EnvironmentUnits } from '../store/slices/types';
 
 export default function WeakPoint() {
   const dispatch = useDispatch();
@@ -24,7 +31,11 @@ export default function WeakPoint() {
           specs={['outerArmorBS', 'weightInAir', 'maxTension']}
         />
       )}
-      <RadioDualInput />
+      <RadioDualInput
+        values={['FLUID', 'GAS']}
+        onPress={(value) => dispatch(changeEnvironment(value))}
+        currentValue={environment}
+      />
     </View>
   );
 }
