@@ -1,13 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { styleVariables as st } from '../styles/global';
-
-import { ChangeEvent, FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { StoreState, changeCable } from '../store';
 import { cablesData } from '../database/cables';
 
-export const CableSelector: FC = () => {
+export default function CableSelector() {
   const dispatch = useDispatch();
   const { currentCable } = useSelector((state: StoreState) => state.weakPoint);
 
@@ -20,48 +18,45 @@ export const CableSelector: FC = () => {
 
   return (
     <View style={inputGroup}>
-      <Text>Choose Cable Type:</Text>
-      {/* <select
-        className="input-item"
-        id="cable"
-        name="cable"
-        value={currentCable.type}
-        onChange={handleCableChange}
-      >
-        {cablesData.map((cable) => {
-          return (
-            <option
-              key={cable.type}
-              value={cable.type}
-              aria-labelledby="choose-cable"
-            >
-              {cable.type}
-            </option>
-          );
-        })}
-      </select> */}
-      <Picker
-        selectedValue={currentCable.type}
-        onValueChange={handleCableChange}
-      >
-        {cablesData.map((cable) => {
-          return (
-            <Picker.Item
-              key={cable.type}
-              value={cable.type}
-              label={cable.type}
-            />
-          );
-        })}
-      </Picker>
+      <Text style={text}>Choose Cable Type:</Text>
+      <View style={pickerView}>
+        <Picker
+          selectedValue={currentCable.type}
+          onValueChange={handleCableChange}
+        >
+          {cablesData.map((cable) => {
+            return (
+              <Picker.Item
+                key={cable.type}
+                value={cable.type}
+                label={cable.type}
+              />
+            );
+          })}
+        </Picker>
+      </View>
     </View>
   );
-};
+}
 
-const { inputGroup } = StyleSheet.create({
+const { text, inputGroup, pickerView } = StyleSheet.create({
   inputGroup: {
     margin: st.spacingDefault,
     display: 'flex',
     flexDirection: 'column',
+  },
+  text: {
+    color: st.textColorPri,
+    fontSize: st.fontSizePri,
+    fontFamily: 'Outfit-Light',
+  },
+
+  pickerView: {
+    height: 32,
+    borderWidth: 1,
+    borderBlockColor: 'black',
+    borderRadius: 5,
+    backgroundColor: 'white',
+    justifyContent: 'center',
   },
 });

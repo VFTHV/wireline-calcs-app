@@ -21,6 +21,7 @@ export const styleVariables = {
   warningColor: 'rgba(255, 0, 0, 0.616)',
   gray: 'rgb(184, 177, 169)',
   black: 'black',
+  textColorPri: 'white',
   spacingDefault: 16,
   fontSizePri: 19,
 };
