@@ -1,4 +1,5 @@
-import { FC, ReactNode, Fragment } from 'react';
+import { ReactNode } from 'react';
+import { Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { InputData } from './InputData';
 import {
@@ -26,9 +27,9 @@ export const CableManualEntrance = ({ specs }: CableManualEntranceProps) => {
     diameter: <>TBD for developer</>,
     stretchCoeff: (
       <InputData
-        onChange={(e) => dispatch(changeStretchCoef(+e.target.value))}
+        onChange={(value) => dispatch(changeStretchCoef(+value))}
         typeId={'stretchCoef'}
-        value={stretchCoeff}
+        value={stretchCoeff.toString()}
         unit={unitSystem.depthUnits}
       >
         Cable Stretch Coef. / (1Kft*1Klbs)
@@ -37,9 +38,9 @@ export const CableManualEntrance = ({ specs }: CableManualEntranceProps) => {
     breakingStrength: <>TBD for developer</>,
     maxTension: (
       <InputData
-        onChange={(e) => dispatch(changeMaxTension(+e.target.value))}
+        onChange={(value) => dispatch(changeMaxTension(+value))}
         typeId={'maxTension'}
-        value={maxTension}
+        value={maxTension.toString()}
         unit={unitSystem.weightUnits}
       >
         MAX. RECOMMENDED TENSION
@@ -51,9 +52,9 @@ export const CableManualEntrance = ({ specs }: CableManualEntranceProps) => {
     tempCorrResist: <>TBD for developer</>,
     innerArmorBS: (
       <InputData
-        onChange={(e) => dispatch(changeInnerBS(+e.target.value))}
+        onChange={(value) => dispatch(changeInnerBS(+value))}
         typeId={'outerBS'}
-        value={innerArmorBS}
+        value={innerArmorBS.toString()}
         unit={unitSystem.weightUnits}
       >
         INNER ARMOR BREAKING STRENGTH
@@ -61,9 +62,9 @@ export const CableManualEntrance = ({ specs }: CableManualEntranceProps) => {
     ),
     outerArmorBS: (
       <InputData
-        onChange={(e) => dispatch(changeOuterBS(+e.target.value))}
+        onChange={(value) => dispatch(changeOuterBS(+value))}
         typeId={'outerBS'}
-        value={outerArmorBS}
+        value={outerArmorBS.toString()}
         unit={unitSystem.weightUnits}
       >
         OUTER ARMOR BREAKING STRENGTH
@@ -71,9 +72,9 @@ export const CableManualEntrance = ({ specs }: CableManualEntranceProps) => {
     ),
     weightInAir: (
       <InputData
-        onChange={(e) => dispatch(changeWeightInAir(+e.target.value))}
+        onChange={(value) => dispatch(changeWeightInAir(+value))}
         typeId={'weightInAir'}
-        value={weightInAir}
+        value={weightInAir.toString()}
         unit={unitSystem.weightUnits}
       >
         CABLE WEIGHT IN AIR
@@ -82,10 +83,10 @@ export const CableManualEntrance = ({ specs }: CableManualEntranceProps) => {
   };
 
   return (
-    <>
+    <View>
       {specs.map((spec) => {
-        return <Fragment key={spec}>{content[spec]}</Fragment>;
+        return <Text key={spec}>{content[spec]}</Text>;
       })}
-    </>
+    </View>
   );
 };
