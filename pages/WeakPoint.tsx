@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import CableSelector from '../components/CableSelector';
 import { CurrentCableSpecs } from '../components/CurrentCableSpecs';
 import { CableManualEntrance } from '../components/CableManualEntrance';
@@ -16,12 +16,7 @@ export default function WeakPoint() {
         ]}
       /> */}
       <CableManualEntrance
-        specs={[
-          'breakingStrength',
-          'outerArmorBS',
-          'weightInAir',
-          'maxTension',
-        ]}
+        specs={['outerArmorBS', 'weightInAir', 'maxTension']}
       />
     </View>
   );

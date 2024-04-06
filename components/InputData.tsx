@@ -1,13 +1,7 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  NativeSyntheticEvent,
-  TextInputChangeEventData,
-} from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { maxInputValues } from '../database/maxInputValues';
 import { MeasurementType, UnitType } from '../store/slices/types';
+import { styleVariables as st } from '../styles/global';
 
 interface InputDataProps {
   children: string;
@@ -42,27 +36,54 @@ export const InputData = ({
 
   return (
     <View style={inputGroup}>
-      <Text>{children}</Text>
-      <View>
+      <Text style={labelText}>{children}</Text>
+      <View style={inputValues}>
         <TextInput
           keyboardType="numeric"
-          style={[inputItem, inputWithUnits]}
-          // value={value ? Math.abs(+value).toString() : ''}
+          style={inputItem}
           value={correctValue}
           onChangeText={onChange}
           placeholder={placeholder}
         />
-        <Text>{unit}</Text>
+        <Text style={units}>{unit}</Text>
       </View>
-      {/* {renderError()} */}
+      {renderError()}
     </View>
   );
 };
 
-const { inputGroup, inputItem, inputWithUnits, errorMessage } =
+const { inputGroup, labelText, inputValues, inputItem, units, errorMessage } =
   StyleSheet.create({
-    inputGroup: {},
-    inputItem: {},
-    inputWithUnits: {},
-    errorMessage: {},
+    inputGroup: {
+      margin: st.spacingDefault,
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    labelText: {
+      fontFamily: 'Outfit-Light',
+      color: st.secondaryColor,
+      fontSize: st.fontSizePri,
+    },
+    inputValues: {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 5,
+    },
+    inputItem: {
+      flex: 1,
+      height: 32,
+      backgroundColor: 'white',
+      textAlign: 'left',
+      paddingLeft: 5,
+      fontFamily: 'Outfit-Light',
+      borderRadius: 5,
+    },
+    units: {
+      fontFamily: 'Outfit-Light',
+      color: st.secondaryColor,
+    },
+    errorMessage: {
+      fontFamily: 'Outfit-Light',
+    },
   });

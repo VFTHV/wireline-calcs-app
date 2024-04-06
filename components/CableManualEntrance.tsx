@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react';
 import { Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { InputData } from './InputData';
@@ -83,10 +83,10 @@ export const CableManualEntrance = ({ specs }: CableManualEntranceProps) => {
   };
 
   return (
-    <View>
+    <>
       {specs.map((spec) => {
-        return <Text key={spec}>{content[spec]}</Text>;
+        return <Fragment key={spec}>{content[spec]}</Fragment>;
       })}
-    </View>
+    </>
   );
 };
