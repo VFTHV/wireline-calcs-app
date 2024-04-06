@@ -1,6 +1,6 @@
 import { FC, ReactNode, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { InputData } from '.';
+import { InputData } from './InputData';
 import {
   changeOuterBS,
   changeWeightInAir,
@@ -15,9 +15,7 @@ interface CableManualEntranceProps {
   specs: CableSpecsKey[];
 }
 
-export const CableManualEntrance: FC<CableManualEntranceProps> = ({
-  specs,
-}) => {
+export const CableManualEntrance = ({ specs }: CableManualEntranceProps) => {
   const dispatch = useDispatch();
   const { outerArmorBS, innerArmorBS, weightInAir, maxTension, stretchCoeff } =
     useSelector((state: StoreState) => state.weakPoint.currentCable);

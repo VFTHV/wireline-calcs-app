@@ -1,4 +1,5 @@
-import { FC, ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { maxInputValues } from '../database/maxInputValues';
 import { MeasurementType, UnitType } from '../store/slices/types';
 
@@ -11,14 +12,14 @@ interface InputDataProps {
   placeholder?: string;
 }
 
-export const InputData: FC<InputDataProps> = ({
+export const InputData = ({
   children,
   onChange,
   typeId,
   value,
   unit,
   placeholder,
-}) => {
+}: InputDataProps) => {
   const renderError = () => {
     const maxInput = maxInputValues[typeId][unit];
     if (!maxInput) return;
@@ -32,28 +33,25 @@ export const InputData: FC<InputDataProps> = ({
   };
 
   return (
-    <div className="input-group">
-      <label
-        htmlFor={typeId}
-        id={`input-for-${typeId}`}
-        aria-label={`input data for ${typeId}`}
-      >
-        {children}
-      </label>
-      <div>
-        <input
-          className="input-item input-with-units"
-          id={typeId}
-          name={typeId}
-          value={value ? Math.abs(value) : ''}
-          type="number"
-          onChange={onChange}
+    <View style={inputGroup}>
+      <Text>{children}</Text>
+      <View>
+        <TextInput
+          style={[inputItem, inputWithUnits]}
+          value={value ? Math.abs(value).toString() : ''}
+          // type="number"
+          // onChange={onChange}
           placeholder={placeholder}
-          aria-labelledby={`input-for-${typeId}`}
         />
         <span>{unit}</span>
-      </div>
+      </View>
       {renderError()}
-    </div>
+    </View>
   );
 };
+
+const { inputGroup, inputItem, inputWithUnits } = StyleSheet.create({
+  inputGroup: {},
+  inputItem: {},
+  inputWithUnits: {},
+});
