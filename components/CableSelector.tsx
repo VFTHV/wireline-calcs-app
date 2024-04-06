@@ -46,11 +46,10 @@ const { text, inputGroup, pickerView } = StyleSheet.create({
     flexDirection: 'column',
   },
   text: {
-    color: st.primaryColor,
+    color: st.secondaryColor,
     fontSize: st.fontSizePri,
     fontFamily: 'Outfit-Light',
   },
-
   pickerView: {
     height: 32,
     borderRadius: 5,
