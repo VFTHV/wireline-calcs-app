@@ -1,4 +1,5 @@
-import { FC, ReactNode, Fragment } from 'react';
+import { ReactNode } from 'react';
+import { View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { StoreState } from '../store';
 import TableRow from './TableRow';
@@ -8,7 +9,7 @@ interface CurrentCableSpecsProps {
   specs: CableSpecsKey[];
 }
 
-export const CurrentCableSpecs: FC<CurrentCableSpecsProps> = ({ specs }) => {
+export const CurrentCableSpecs = ({ specs }: CurrentCableSpecsProps) => {
   const { weightUnits, depthUnits, diameterUnits, resistivityUnits } =
     useSelector((state: StoreState) => state.unitSystem);
 
@@ -77,14 +78,10 @@ export const CurrentCableSpecs: FC<CurrentCableSpecsProps> = ({ specs }) => {
   };
 
   return (
-    <>
-      <table className="table" aria-label="current cable specs table">
-        <tbody>
-          {specs.map((spec) => {
-            return <Fragment key={spec}>{content[spec]}</Fragment>;
-          })}
-        </tbody>
-      </table>
-    </>
+    <View>
+      {specs.map((spec) => {
+        return <View key={spec}>{content[spec]}</View>;
+      })}
+    </View>
   );
 };

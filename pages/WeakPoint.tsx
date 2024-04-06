@@ -1,15 +1,19 @@
 import { StyleSheet, Text, View } from 'react-native';
 import CableSelector from '../components/CableSelector';
-import TableRow from '../components/TableRow';
+import { CurrentCableSpecs } from '../components/CurrentCableSpecs';
 
 export default function WeakPoint() {
   return (
     <View>
       <CableSelector />
-
-      <TableRow data={100} units="degF">
-        Cable Breaking Strength
-      </TableRow>
+      <CurrentCableSpecs
+        specs={[
+          'breakingStrength',
+          'outerArmorBS',
+          'weightInAir',
+          'maxTension',
+        ]}
+      />
     </View>
   );
 }
