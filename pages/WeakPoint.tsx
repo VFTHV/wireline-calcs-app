@@ -4,6 +4,7 @@ import { CurrentCableSpecs } from '../components/CurrentCableSpecs';
 import { CableManualEntrance } from '../components/CableManualEntrance';
 import { useSelector, useDispatch } from 'react-redux';
 import { StoreState } from '../store';
+import { RadioDualInput } from '../components/RadioDualInput';
 
 export default function WeakPoint() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export default function WeakPoint() {
           specs={['outerArmorBS', 'weightInAir', 'maxTension']}
         />
       )}
+      <RadioDualInput />
     </View>
   );
 }
