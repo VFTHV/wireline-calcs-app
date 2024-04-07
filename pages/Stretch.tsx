@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { useState } from 'react';
 import CableSelector from '../components/CableSelector';
 import { CableManualEntrance } from '../components/CableManualEntrance';
@@ -57,5 +57,3 @@ export default function Stretch() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({});
