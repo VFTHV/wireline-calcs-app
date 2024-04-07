@@ -25,7 +25,7 @@ export default function Navigation() {
           component={Pages.UnitsPage}
           options={{
             ...stackScreenOptions,
-            title: 'Choose Measurement Units',
+            title: 'Change Measurement Units',
           }}
         />
         <Stack.Screen

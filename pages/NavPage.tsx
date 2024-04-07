@@ -2,6 +2,7 @@ import { StyleSheet, View, ScrollView } from 'react-native';
 import React from 'react';
 import { NavItem } from '../components/NavItem';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { Feather } from '@expo/vector-icons';
 
 export type RootStackParamList = {
   Units: undefined;
@@ -26,14 +27,18 @@ export default function NavPage({ navigation }: NavPageProps) {
   return (
     <ScrollView>
       <View>
-        <NavItem navigation={navigation} to="Units">
-          Choose Measurement Units
+        <NavItem
+          navigation={navigation}
+          to="Units"
+          icon={<Feather name="settings" size={24} color="white" />}
+        >
+          Change Measurement Units
         </NavItem>
         <NavItem navigation={navigation} to="WeakPoint">
-          Weak Point
+          Weak Point Calculator
         </NavItem>
         <NavItem navigation={navigation} to="WeightBar">
-          Weight Bar
+          Sinker Bar Weight Calculator
         </NavItem>
         <NavItem navigation={navigation} to="Stretch">
           Cable Stretch Calculator
