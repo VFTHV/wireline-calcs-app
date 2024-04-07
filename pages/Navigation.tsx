@@ -96,7 +96,7 @@ export default function Navigation() {
         <Stack.Screen
           name="Disclaimer"
           component={Pages.Disclaimer}
-          options={{ ...stackScreenOptions, title: 'Weak Point' }}
+          options={{ ...stackScreenOptions }}
         />
       </Stack.Navigator>
     </NavigationContainer>
