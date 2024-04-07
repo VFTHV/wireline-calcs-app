@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import { WeightBarSelector } from '../components/WeightBarSelector';
 
 export default function WeightBar() {
   return (
     <View>
-      <Text>WeightBar</Text>
+      <WeightBarSelector />
     </View>
   );
 }
