@@ -3,6 +3,7 @@ import { Picker } from '@react-native-picker/picker';
 import React, { useState } from 'react';
 import { weightBarsData } from '../database/weightBars';
 import TableRow from './TableRow';
+import { styleVariables as st } from '../styles/global';
 
 export const WeightBarSelector = () => {
   const weightBarODs = [...new Set(weightBarsData.map((bar) => bar.od))];
@@ -14,7 +15,7 @@ export const WeightBarSelector = () => {
   return (
     <>
       <View style={inputGroup}>
-        <Text style={labelText}>Weight Bar OD:</Text>
+        <Text style={text}>Weight Bar OD:</Text>
         <View style={pickerView}>
           <Picker
             onValueChange={(value: string) => setOd(value)}
@@ -31,7 +32,7 @@ export const WeightBarSelector = () => {
           type.charAt(0).toUpperCase() + type.slice(1).toLowerCase();
 
         return (
-          <View style={table} key={i}>
+          <View style={collection} key={i}>
             <TableRow data={capType} units="">
               Material:
             </TableRow>
@@ -49,9 +50,24 @@ export const WeightBarSelector = () => {
   );
 };
 
-const { inputGroup, labelText, pickerView, table } = StyleSheet.create({
-  inputGroup: {},
-  labelText: {},
-  pickerView: {},
-  table: {},
+const { inputGroup, text, pickerView, collection } = StyleSheet.create({
+  inputGroup: {
+    margin: st.spacingDefault,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  text: {
+    color: st.secondaryColor,
+    fontSize: st.fontSizePri,
+    fontFamily: 'Outfit-Light',
+  },
+  pickerView: {
+    height: 32,
+    borderRadius: 5,
+    backgroundColor: st.secondaryColor,
+    justifyContent: 'center',
+  },
+  collection: {
+    marginTop: 5,
+  },
 });

@@ -41,7 +41,10 @@ export default function TableRow({
   return (
     <View style={tRow} aria-label={`table group displaying in ${units}`}>
       <View style={[rowItem]}>
-        <Text style={tHead}>{`${children}, ${units}`}</Text>
+        <Text style={tHead}>
+          {children}
+          {units && `, ${units}`}
+        </Text>
       </View>
       <View style={[rowItem]}>
         <Text style={tData}>{displayData()}</Text>
