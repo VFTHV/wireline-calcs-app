@@ -38,7 +38,7 @@ export default function WeakPoint() {
         />
       )}
       <RadioDualInput
-        values={['FLUID', 'GAS']}
+        values={[EnvironmentUnits.FLUID, EnvironmentUnits.GAS]}
         onPress={(value) => dispatch(changeEnvironment(value))}
         currentValue={environment}
       />
