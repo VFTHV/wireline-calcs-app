@@ -7,7 +7,7 @@ interface InputDataProps {
   children: string;
   onChange: (value: string) => void;
   typeId: MeasurementType;
-  value: string;
+  value: number | string;
   unit: UnitType;
   placeholder?: string;
 }
@@ -32,7 +32,10 @@ export const InputData = ({
     }
   };
 
-  const validValue = Number(value) >= 0 ? value : '';
+  const integerValue = Number(value) ? value.toString() : '';
+  const decimalValue = Number(value) >= 0 ? value.toString() : '';
+
+  const correctValue = typeId === 'diameter' ? decimalValue : integerValue;
 
   return (
     <View style={inputGroup}>
@@ -41,7 +44,7 @@ export const InputData = ({
         <TextInput
           keyboardType="numeric"
           style={inputItem}
-          value={validValue}
+          value={correctValue}
           onChangeText={onChange}
           placeholder={placeholder}
         />

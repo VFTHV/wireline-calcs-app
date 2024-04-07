@@ -20,9 +20,9 @@ export default function WeightBar() {
     (state: StoreState) => state.weightBar
   );
   const unitSystem = useSelector((state: StoreState) => state.unitSystem);
-
+  console.log(typeof diameter);
   const { balanceWeight, finalWeight, sinkerBarWeight } = useWeightBarCalc(
-    diameter,
+    Number(diameter),
     wellPressure,
     weight,
     percentOverBalance,
@@ -34,7 +34,7 @@ export default function WeightBar() {
       <InputData
         onChange={(value) => dispatch(changeDiameter(value))}
         typeId={'diameter'}
-        value={diameter.toString()}
+        value={diameter}
         unit={unitSystem.diameterUnits}
       >
         Cable Diameter:
@@ -42,7 +42,7 @@ export default function WeightBar() {
       <InputData
         onChange={(value) => dispatch(changePressure(+value))}
         typeId={'pressure'}
-        value={wellPressure.toString()}
+        value={wellPressure}
         unit={unitSystem.pressureUnits}
       >
         Well Pressure:
@@ -50,7 +50,7 @@ export default function WeightBar() {
       <InputData
         onChange={(value) => dispatch(changeWeight(+value))}
         typeId={'toolWeight'}
-        value={weight.toString()}
+        value={weight}
         unit={unitSystem.weightUnits}
       >
         Tool Weight:
@@ -58,7 +58,7 @@ export default function WeightBar() {
       <InputData
         onChange={(value) => dispatch(changePercentOverBalance(+value))}
         typeId={'overBalance'}
-        value={percentOverBalance.toString()}
+        value={percentOverBalance}
         unit={'%'}
       >
         Percent over Balance:
