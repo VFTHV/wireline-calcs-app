@@ -34,7 +34,7 @@ export const PipeSelector = ({ pipeData, typeId }: PipeSelectorProps) => {
     typeId === 'casing' ? changeCasing : changeTubing;
 
   const pipeWord = typeId.charAt(0).toUpperCase() + typeId.slice(1);
-
+  console.log(nom);
   return (
     <View style={inputGroup}>
       <Text style={text}>{pipeWord} OD:</Text>
@@ -43,6 +43,10 @@ export const PipeSelector = ({ pipeData, typeId }: PipeSelectorProps) => {
           selectedValue={nom}
           onValueChange={(value: string) => setNom(value)}
         >
+          <Picker.Item
+            value={`Choose ${pipeWord} OD`}
+            label={`Choose ${pipeWord} OD`}
+          />
           {ODs.map((od) => {
             return <Picker.Item key={od} value={od} label={od} />;
           })}
@@ -55,6 +59,7 @@ export const PipeSelector = ({ pipeData, typeId }: PipeSelectorProps) => {
           selectedValue={weight}
           onValueChange={(value: number) => setWeight(+value)}
         >
+          <Picker.Item value={null} label={`Choose ${pipeWord} Weight PPF`} />
           {pipeWeights.map((weight) => {
             return (
               <Picker.Item key={weight} value={weight} label={String(weight)} />
