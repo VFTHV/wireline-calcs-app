@@ -19,6 +19,7 @@ const weightBarSlice = createSlice({
   initialState,
   reducers: {
     changeDiameter(state, action) {
+      console.log(typeof action.payload);
       state.diameter = action.payload;
     },
     changeWeight(state, action) {

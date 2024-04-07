@@ -32,7 +32,7 @@ export const InputData = ({
     }
   };
 
-  const correctValue = Number(value) > 0 ? Math.abs(+value).toString() : '';
+  const validValue = Number(value) >= 0 ? value : '';
 
   return (
     <View style={inputGroup}>
@@ -41,7 +41,7 @@ export const InputData = ({
         <TextInput
           keyboardType="numeric"
           style={inputItem}
-          value={correctValue}
+          value={validValue}
           onChangeText={onChange}
           placeholder={placeholder}
         />
