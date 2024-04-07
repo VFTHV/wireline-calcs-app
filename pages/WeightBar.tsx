@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 import React from 'react';
 import { WeightBarSelector } from '../components/WeightBarSelector';
 import { InputData } from '../components/InputData';
@@ -20,7 +20,7 @@ export default function WeightBar() {
     (state: StoreState) => state.weightBar
   );
   const unitSystem = useSelector((state: StoreState) => state.unitSystem);
-  console.log(typeof diameter);
+
   const { balanceWeight, finalWeight, sinkerBarWeight } = useWeightBarCalc(
     Number(diameter),
     wellPressure,

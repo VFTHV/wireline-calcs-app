@@ -48,6 +48,20 @@ export const PipeSelector = ({ pipeData, typeId }: PipeSelectorProps) => {
           })}
         </Picker>
       </View>
+
+      <Text style={text}>{pipeWord} Weight:</Text>
+      <View style={pickerView}>
+        <Picker
+          selectedValue={weight}
+          onValueChange={(value: number) => setWeight(+value)}
+        >
+          {pipeWeights.map((weight) => {
+            return (
+              <Picker.Item key={weight} value={weight} label={String(weight)} />
+            );
+          })}
+        </Picker>
+      </View>
     </View>
   );
 };
