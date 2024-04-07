@@ -16,7 +16,7 @@ export default function KeySeat() {
   const { stretchCoeff, type } = useSelector(
     (state: StoreState) => state.weakPoint.currentCable
   );
-  const { unitSystem } = useSelector((state: StoreState) => state);
+  const unitSystem = useSelector((state: StoreState) => state.unitSystem);
 
   const stuckDepth = useKeySeatCalc(
     diffStretch,

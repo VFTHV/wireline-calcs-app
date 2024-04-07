@@ -18,7 +18,7 @@ import { useMaxPullCalc } from '../logics/useMaxPullCalc';
 import { EnvironmentUnits } from '../store/slices/types';
 
 export default function TensionAtDepth() {
-  const { unitSystem } = useSelector((state: StoreState) => state);
+  const unitSystem = useSelector((state: StoreState) => state.unitSystem);
   const { depth, environment, currentCable } = useSelector(
     (state: StoreState) => state.weakPoint
   );

@@ -16,7 +16,7 @@ export default function Stretch() {
   const { currentCable, depth } = useSelector(
     (state: StoreState) => state.weakPoint
   );
-  const { unitSystem } = useSelector((state: StoreState) => state);
+  const unitSystem = useSelector((state: StoreState) => state.unitSystem);
 
   const dispatch = useDispatch();
   const stretch = useStretchCalc(

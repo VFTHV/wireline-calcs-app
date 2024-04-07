@@ -34,7 +34,7 @@ export const PipeSelector = ({ pipeData, typeId }: PipeSelectorProps) => {
     typeId === 'casing' ? changeCasing : changeTubing;
 
   const pipeWord = typeId.charAt(0).toUpperCase() + typeId.slice(1);
-  console.log(nom);
+
   return (
     <View style={inputGroup}>
       <Text style={text}>{pipeWord} OD:</Text>

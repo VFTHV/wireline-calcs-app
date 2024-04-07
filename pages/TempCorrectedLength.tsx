@@ -17,7 +17,7 @@ export default function TempCorrectedLength() {
   );
 
   const { currentCable } = useSelector((state: StoreState) => state.weakPoint);
-  const { unitSystem } = useSelector((state: StoreState) => state);
+  const unitSystem = useSelector((state: StoreState) => state.unitSystem);
 
   const { length } = useTempLengthCalc(
     resistance,
