@@ -38,7 +38,7 @@ export default function FontsLoadedContainer({
 
 const { container } = StyleSheet.create({
   container: {
-    paddingTop: 50,
+    paddingTop: 20,
     backgroundColor: st.primaryColor,
     flex: 1,
   },
