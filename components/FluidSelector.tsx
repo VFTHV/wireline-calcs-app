@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { fluidsData } from '../database/cbl';
 import { useDispatch, useSelector } from 'react-redux';
 import { StoreState, changeFluid } from '../store';
 import { Picker } from '@react-native-picker/picker';
-import { pickerStyles, styleVariables as st } from '../styles/global';
+import { pickerStyles } from '../styles/global';
 
 export const FluidSelector = () => {
   const types = [...new Set(fluidsData.map((fluid) => fluid.type))];

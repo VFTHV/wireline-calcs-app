@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -6,7 +6,7 @@ import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import { changeCasing, changeTubing } from '../store';
 import { PipeSpecs } from '../database/casingsTubings';
 import { Picker } from '@react-native-picker/picker';
-import { pickerStyles, styleVariables as st } from '../styles/global';
+import { pickerStyles } from '../styles/global';
 
 interface PipeSelectorProps {
   pipeData: PipeSpecs[];
