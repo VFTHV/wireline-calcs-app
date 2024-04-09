@@ -6,7 +6,7 @@ import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import { changeCasing, changeTubing } from '../store';
 import { PipeSpecs } from '../database/casingsTubings';
 import { Picker } from '@react-native-picker/picker';
-import { styleVariables as st } from '../styles/global';
+import { pickerStyles, styleVariables as st } from '../styles/global';
 
 interface PipeSelectorProps {
   pipeData: PipeSpecs[];
@@ -71,21 +71,4 @@ export const PipeSelector = ({ pipeData, typeId }: PipeSelectorProps) => {
   );
 };
 
-const { text, inputGroup, pickerView } = StyleSheet.create({
-  inputGroup: {
-    margin: st.spacingDefault,
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  text: {
-    color: st.secondaryColor,
-    fontSize: st.fontSizePri,
-    fontFamily: 'Outfit-Light',
-  },
-  pickerView: {
-    height: 32,
-    borderRadius: 5,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-  },
-});
+const { text, inputGroup, pickerView } = pickerStyles;

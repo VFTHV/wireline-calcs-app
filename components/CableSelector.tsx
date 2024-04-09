@@ -4,6 +4,7 @@ import { styleVariables as st } from '../styles/global';
 import { useSelector, useDispatch } from 'react-redux';
 import { StoreState, changeCable } from '../store';
 import { cablesData } from '../database/cables';
+import { pickerStyles } from '../styles/global';
 
 export default function CableSelector() {
   const dispatch = useDispatch();
@@ -39,21 +40,4 @@ export default function CableSelector() {
   );
 }
 
-const { text, inputGroup, pickerView } = StyleSheet.create({
-  inputGroup: {
-    margin: st.spacingDefault,
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  text: {
-    color: st.secondaryColor,
-    fontSize: st.fontSizePri,
-    fontFamily: 'Outfit-Light',
-  },
-  pickerView: {
-    height: 32,
-    borderRadius: 5,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-  },
-});
+const { text, inputGroup, pickerView } = pickerStyles;

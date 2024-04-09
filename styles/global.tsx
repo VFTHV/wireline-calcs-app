@@ -1,4 +1,9 @@
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  TextStyle,
+  TouchableOpacity,
+  ViewStyle,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Entypo } from '@expo/vector-icons';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
@@ -41,5 +46,30 @@ export const stackScreenOptions: Partial<NativeStackNavigationOptions> = {
         <Entypo name="chevron-left" size={24} color="white" />
       </TouchableOpacity>
     );
+  },
+};
+
+type PickerStylesType = {
+  inputGroup: Partial<ViewStyle>;
+  text: Partial<TextStyle>;
+  pickerView: Partial<TextStyle>;
+};
+
+export const pickerStyles: PickerStylesType = {
+  inputGroup: {
+    margin: styleVariables.spacingDefault,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  text: {
+    color: styleVariables.secondaryColor,
+    fontSize: styleVariables.fontSizePri,
+    fontFamily: 'Outfit-Light',
+  },
+  pickerView: {
+    height: 32,
+    borderRadius: 5,
+    backgroundColor: 'white',
+    justifyContent: 'center',
   },
 };

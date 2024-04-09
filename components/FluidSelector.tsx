@@ -4,7 +4,7 @@ import { fluidsData } from '../database/cbl';
 import { useDispatch, useSelector } from 'react-redux';
 import { StoreState, changeFluid } from '../store';
 import { Picker } from '@react-native-picker/picker';
-import { styleVariables as st } from '../styles/global';
+import { pickerStyles, styleVariables as st } from '../styles/global';
 
 export const FluidSelector = () => {
   const types = [...new Set(fluidsData.map((fluid) => fluid.type))];
@@ -28,21 +28,4 @@ export const FluidSelector = () => {
   );
 };
 
-const { text, inputGroup, pickerView } = StyleSheet.create({
-  inputGroup: {
-    margin: st.spacingDefault,
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  text: {
-    color: st.secondaryColor,
-    fontSize: st.fontSizePri,
-    fontFamily: 'Outfit-Light',
-  },
-  pickerView: {
-    height: 32,
-    borderRadius: 5,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-  },
-});
+const { text, inputGroup, pickerView } = pickerStyles;
