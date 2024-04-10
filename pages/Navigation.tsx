@@ -33,7 +33,13 @@ export default function Navigation() {
         <Stack.Screen
           name="WeakPoint"
           component={Pages.WeakPoint}
-          options={{ ...stackScreenOptions, title: 'Weak Point' }}
+          options={{
+            ...stackScreenOptions,
+            title: 'Weak Point',
+            headerRight: (props) => (
+              <QuestionModal modalContentKey="weakpoint" />
+            ),
+          }}
         />
         <Stack.Screen
           name="WeightBar"

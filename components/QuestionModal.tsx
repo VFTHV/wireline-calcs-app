@@ -2,6 +2,7 @@ import {
   StyleSheet,
   Modal,
   TouchableOpacity,
+  TouchableHighlight,
   Text,
   ScrollView,
 } from 'react-native';
@@ -21,6 +22,8 @@ export default function QuestionModal({
 }: QuestionModalPropsType) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   // if no prop, then 'SORRY, NO CONTENT' in title and in content section
+  // create a button with touchable opacity at the corner of the screen
+  //  which will be closing the modal
   return (
     <TouchableOpacity onPress={() => setIsModalVisible(!isModalVisible)}>
       <AntDesign name="questioncircleo" size={24} color="white" />
@@ -30,7 +33,7 @@ export default function QuestionModal({
         visible={isModalVisible}
         onRequestClose={() => setIsModalVisible(false)}
       >
-        <TouchableOpacity onPress={() => setIsModalVisible(!isModalVisible)}>
+        <TouchableHighlight onPress={() => setIsModalVisible(!isModalVisible)}>
           <ScrollView style={container}>
             <Text style={[standardText, header]}>
               {modalContent[modalContentKey]?.title}
@@ -41,7 +44,7 @@ export default function QuestionModal({
               </Text>
             ))}
           </ScrollView>
-        </TouchableOpacity>
+        </TouchableHighlight>
       </Modal>
     </TouchableOpacity>
   );
