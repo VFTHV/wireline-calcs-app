@@ -27,7 +27,7 @@ export default function Navigation() {
           options={{
             ...stackScreenOptions,
             title: 'Change Measurement Units',
-            headerRight: (props) => <QuestionModal />,
+            headerRight: (props) => <QuestionModal modalContentKey="units" />,
           }}
         />
         <Stack.Screen

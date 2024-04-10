@@ -9,7 +9,16 @@ import React, { useState } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import { styleVariables as st } from '../styles/global';
 
-export default function QuestionModal() {
+import { modalContent } from '../database/modalContent';
+import { PathNamesType } from '../database/routes';
+
+type QuestionModalPropsType = {
+  modalContentKey: keyof Partial<PathNamesType>;
+};
+
+export default function QuestionModal({
+  modalContentKey,
+}: QuestionModalPropsType) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   // if no prop, then 'SORRY, NO CONTENT' in title and in content section
   return (
@@ -23,13 +32,14 @@ export default function QuestionModal() {
       >
         <TouchableOpacity onPress={() => setIsModalVisible(!isModalVisible)}>
           <ScrollView style={container}>
-            <Text style={[standardText, header]}>Lorem, ipsum dolor.</Text>
-            <Text style={[standardText, content]}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis
-              voluptatum nihil corrupti odit reiciendis eum iusto ipsum
-              repudiandae quia vel odio facilis, sequi maiores eligendi
-              distinctio repellendus enim quidem dolor.
+            <Text style={[standardText, header]}>
+              {modalContent[modalContentKey]?.title}
             </Text>
+            {modalContent[modalContentKey]?.content.map((text) => (
+              <Text key={text.substring(0, 15)} style={[standardText, content]}>
+                {text}
+              </Text>
+            ))}
           </ScrollView>
         </TouchableOpacity>
       </Modal>
