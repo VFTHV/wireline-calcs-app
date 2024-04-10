@@ -1,4 +1,4 @@
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import CableSelector from '../components/CableSelector';
 import { CurrentCableSpecs } from '../components/CurrentCableSpecs';
 import { CableManualEntrance } from '../components/CableManualEntrance';
@@ -73,5 +73,3 @@ export default function WeakPoint() {
     </ScrollView>
   );
 }
-
-const {} = StyleSheet.create({});

@@ -71,5 +71,3 @@ export default function NavPage({ navigation }: NavPageProps) {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({});
