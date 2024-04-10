@@ -11,7 +11,7 @@ import { styleVariables as st } from '../styles/global';
 
 export default function QuestionModal() {
   const [isModalVisible, setIsModalVisible] = useState(false);
-
+  // if no prop, then 'SORRY, NO CONTENT' in title and in content section
   return (
     <TouchableOpacity onPress={() => setIsModalVisible(!isModalVisible)}>
       <AntDesign name="questioncircleo" size={24} color="white" />
