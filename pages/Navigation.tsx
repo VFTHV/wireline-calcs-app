@@ -3,6 +3,7 @@ import { styleVariables as st } from '../styles/global';
 import { Pages } from '../pages';
 import { stackScreenOptions } from '../styles/global';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import QuestionModal from '../components/QuestionModal';
 
 export default function Navigation() {
   const Stack = createNativeStackNavigator();
@@ -26,6 +27,7 @@ export default function Navigation() {
           options={{
             ...stackScreenOptions,
             title: 'Change Measurement Units',
+            headerRight: (props) => <QuestionModal />,
           }}
         />
         <Stack.Screen
