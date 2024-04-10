@@ -61,9 +61,9 @@ export default function NavPage({ navigation }: NavPageProps) {
         <NavItem navigation={navigation} to="FluidVelocity">
           Fluid Velocity
         </NavItem>
-        <NavItem navigation={navigation} to="Feedback">
+        {/* <NavItem navigation={navigation} to="Feedback">
           Feedback
-        </NavItem>
+        </NavItem> */}
         <NavItem navigation={navigation} to="Disclaimer">
           Disclaimer
         </NavItem>
