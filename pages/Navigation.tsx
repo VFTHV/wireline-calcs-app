@@ -98,6 +98,9 @@ export default function Navigation() {
           options={{
             ...stackScreenOptions,
             title: 'Temp. Corrected Length',
+            headerRight: (props) => (
+              <QuestionModal modalContentKey="tempCorrLength" />
+            ),
           }}
         />
         <Stack.Screen
@@ -106,6 +109,7 @@ export default function Navigation() {
           options={{
             ...stackScreenOptions,
             title: 'Cement Bond Log Calcs',
+            headerRight: (props) => <QuestionModal modalContentKey="cbl" />,
           }}
         />
         <Stack.Screen

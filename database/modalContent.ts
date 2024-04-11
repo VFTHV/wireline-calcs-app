@@ -80,4 +80,23 @@ export const modalContent: ModalContentType = {
       'API Casing Specs The API (American Petroleum Institute) casing sizes are standard measurements used in the oil and gas industry to specify the diameter and wall thickness of casings. These sizes are essential for ensuring compatibility and proper functioning of wellbore equipment',
     ],
   },
+  tempCorrLength: {
+    title: 'Temp. Corrected Length Help',
+    content: [
+      'Step 1. Enter current environment temperature in degF or degC',
+      'Step 2. Enter the total wireline resistance that you measured between cablehead and collector ring in Ohms',
+      'Step 3. Choose the cable type you are using',
+    ],
+  },
+  cbl: {
+    title: 'Cement Bond Log Calcs Help',
+    content: [
+      'Purpose. Use this calculator to determine Travel Times for E1 peak of 3ft and 5ft waveforms',
+      'Step 1. Choose Casing OD',
+      'Step 2. Choose Casing Weight',
+      'Step 3. Enter the OD of CBL tool transmitters and receivers',
+      'Step 4. Choose Fluid Type',
+      'Disclaimer: Please note that calculated values are approximate, since the actual Travel Time may vary depending on tool characteristics, ambient temperature and pressure',
+    ],
+  },
 };
