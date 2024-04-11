@@ -1,6 +1,6 @@
 import { PathNamesType } from './routes';
 
-type ModalContentType = {
+export type ModalContentType = {
   [key in keyof Partial<PathNamesType>]: {
     title: string;
     content: string[];
@@ -41,6 +41,26 @@ export const modalContent: ModalContentType = {
       'FINAL WEIGHT: recommended total toolstring weight with added Percent over Balance weight',
       'SINKER BAR WEIGHT: additional weight required for the TOOL WEIGHT input box to reach the FINAL WEIGHT',
       'Step 6. Additionally, weight bar database is available at the bottom of the page for your information',
+    ],
+  },
+  stretch: {
+    title: 'Cable Stretch Help',
+    content: [
+      'Step 1. Choose your cable type. If MANUAL cable selection is chosen, input CABLE STRETCH / (1Kft * 1Klbs) manually',
+      'Step 2. Input the tension into the CURRENT TENSION input box',
+      'Step 3. Input current depth into the DEPTH input box',
+      'Step 4. Calculator returns the TOTAL CABLE STRETCH amount based on inputs above',
+    ],
+  },
+  keyseat: {
+    title: 'Cable Stuck Depth (Keyseat) Help',
+    content: [
+      'Purpose. If you are unsure whther your cable`(not logging tools)`} got stuck then this calculator to determine cable stuck depth',
+      'Step 1. Choose Cable type or enter manually the Cable Stretch Coefficient',
+      'Step 2. Set your winch tension to approximate cable + toolstring weight in the well fluid. Note your current depth and tension',
+      'Step 3. Pull your winch safely and note your tension difference and depth change that you observed',
+      'Step 4. Enter tension difference and depth change values the into corresponding boxes on the page',
+      'Disclaimer.</strong> Please note that calculated values are linear calculations. The real cable stuck depth may differ from calculation. This difference may be caused by many factors, such as well curvature, temperature, wireline cable age, tension meter inaccuracy etc.',
     ],
   },
 };

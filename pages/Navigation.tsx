@@ -44,7 +44,13 @@ export default function Navigation() {
         <Stack.Screen
           name="WeightBar"
           component={Pages.WeightBar}
-          options={{ ...stackScreenOptions, title: 'Weight Bar' }}
+          options={{
+            ...stackScreenOptions,
+            title: 'Weight Bar',
+            headerRight: (props) => (
+              <QuestionModal modalContentKey="weightbar" />
+            ),
+          }}
         />
         <Stack.Screen
           name="Stretch"
@@ -52,6 +58,7 @@ export default function Navigation() {
           options={{
             ...stackScreenOptions,
             title: 'Cable Stretch Calculator',
+            headerRight: (props) => <QuestionModal modalContentKey="stretch" />,
           }}
         />
         <Stack.Screen
@@ -60,6 +67,7 @@ export default function Navigation() {
           options={{
             ...stackScreenOptions,
             title: 'Cable Stuck Depth (Keyseat)',
+            headerRight: (props) => <QuestionModal modalContentKey="keyseat" />,
           }}
         />
         <Stack.Screen

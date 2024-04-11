@@ -1,4 +1,4 @@
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import React from 'react';
 import { NavItem } from '../components/NavItem';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
