@@ -107,4 +107,10 @@ export const modalContent: ModalContentType = {
       'Step 2. Set intended pumping rate',
     ],
   },
+  feedback: {
+    title: 'Feedback Help',
+    content: [
+      "Report Any Issue. If you see any issue with calculations, page display, user interface responsiveness, error messages, data accuracy, feature functionality, or any other aspect of the application, please don't hesitate to let us know. Your feedback is invaluable in helping us improve the project and provide a better experience for all users",
+    ],
+  },
 };
