@@ -5,13 +5,14 @@ import {
   TouchableHighlight,
   Text,
   ScrollView,
+  View,
 } from 'react-native';
 import React, { useState } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import { styleVariables as st } from '../styles/global';
-
 import { modalContent } from '../database/modalContent';
 import { PathNamesType } from '../database/routes';
+import { Entypo } from '@expo/vector-icons';
 
 type QuestionModalPropsType = {
   modalContentKey: keyof Partial<PathNamesType>;
@@ -39,38 +40,54 @@ export default function QuestionModal({
         visible={isModalVisible}
         onRequestClose={() => setIsModalVisible(false)}
       >
-        <TouchableHighlight onPress={() => setIsModalVisible(!isModalVisible)}>
-          <ScrollView style={container}>
+        <ScrollView style={container}>
+          <View style={titleContainer}>
             <Text style={[standardText, header]}>{renderTitle()}</Text>
-            {modalContent[modalContentKey]?.content.map((text) => (
-              <Text key={text.substring(0, 15)} style={[standardText, content]}>
-                {text}
-              </Text>
-            ))}
-          </ScrollView>
-        </TouchableHighlight>
+            <TouchableOpacity
+              onPress={() => setIsModalVisible(false)}
+              style={closeIcon}
+            >
+              <Entypo name="circle-with-cross" size={24} color="white" />
+            </TouchableOpacity>
+          </View>
+          {modalContent[modalContentKey]?.content.map((text) => (
+            <Text key={text.substring(0, 15)} style={[standardText, content]}>
+              {text}
+            </Text>
+          ))}
+        </ScrollView>
       </Modal>
     </TouchableOpacity>
   );
 }
 
-const { container, standardText, header, content } = StyleSheet.create({
-  container: {
-    padding: st.spacingDefault,
-    backgroundColor: st.primaryColor,
-    height: '100%',
-  },
-  standardText: {
-    marginVertical: 5,
-    fontSize: st.fontSizePri,
-    color: st.secondaryColor,
-  },
-
-  header: {
-    textAlign: 'center',
-    fontFamily: 'Outfit-Bold',
-  },
-  content: {
-    fontFamily: 'Outfit-Light',
-  },
-});
+const { container, titleContainer, standardText, header, closeIcon, content } =
+  StyleSheet.create({
+    container: {
+      padding: st.spacingDefault,
+      backgroundColor: st.primaryColor,
+      height: '100%',
+    },
+    titleContainer: {
+      display: 'flex',
+      flexDirection: 'row',
+      // alignItems: 'center',
+      justifyContent: 'space-between',
+    },
+    standardText: {
+      marginVertical: 5,
+      fontSize: st.fontSizePri,
+      color: st.secondaryColor,
+    },
+    closeIcon: {
+      alignSelf: 'center',
+    },
+    header: {
+      textAlign: 'center',
+      fontFamily: 'Outfit-Bold',
+      flexGrow: 1,
+    },
+    content: {
+      fontFamily: 'Outfit-Light',
+    },
+  });
