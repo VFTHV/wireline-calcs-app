@@ -76,6 +76,9 @@ export default function Navigation() {
           options={{
             ...stackScreenOptions,
             title: 'Max. Tension at Depth',
+            headerRight: (props) => (
+              <QuestionModal modalContentKey="tensionAtDepth" />
+            ),
           }}
         />
         <Stack.Screen

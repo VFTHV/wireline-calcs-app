@@ -60,7 +60,18 @@ export const modalContent: ModalContentType = {
       'Step 2. Set your winch tension to approximate cable + toolstring weight in the well fluid. Note your current depth and tension',
       'Step 3. Pull your winch safely and note your tension difference and depth change that you observed',
       'Step 4. Enter tension difference and depth change values the into corresponding boxes on the page',
-      'Disclaimer.</strong> Please note that calculated values are linear calculations. The real cable stuck depth may differ from calculation. This difference may be caused by many factors, such as well curvature, temperature, wireline cable age, tension meter inaccuracy etc.',
+      'Disclaimer. Please note that calculated values are linear calculations. The real cable stuck depth may differ from calculation. This difference may be caused by many factors, such as well curvature, temperature, wireline cable age, tension meter inaccuracy etc.',
+    ],
+  },
+  tensionAtDepth: {
+    title: 'Max. Tension at Depth Help',
+    content: [
+      'Step 1. Choose your cable type. If MANUAL cable selection is chosen, input OUTER ARMOR BREAKING STRENGTH, INNER ARMOR BREAKING STRENGTH, CABLE WEIGHT IN AIR manually',
+      'Step 2. Choose Environment: FLUID or GAS. Cable weight is lighter in fluid than in gas',
+      'Step 3. Enter the Depth, Number of Outer Armors Used, Nuber of Inner Armors Used, Percent of Weak Point Breaking Strength into the appropriate input boxes',
+      'Step 4. Calculator returns the following:',
+      'CONSERVATIVE PULL: tension at surface required to pull indicated percentage of weak point. Safety factor of 0.8 is applied to this tension',
+      'MAX PULL: tension at surface required to pull indicated percentage of weak point. No safety factor applied at this calculation',
     ],
   },
 };
