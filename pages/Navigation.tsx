@@ -84,7 +84,13 @@ export default function Navigation() {
         <Stack.Screen
           name="CsgSpecs"
           component={Pages.CsgSpecs}
-          options={{ ...stackScreenOptions, title: 'Casing/Tubing Specs' }}
+          options={{
+            ...stackScreenOptions,
+            title: 'Casing/Tubing Specs',
+            headerRight: (props) => (
+              <QuestionModal modalContentKey="csgSpecs" />
+            ),
+          }}
         />
         <Stack.Screen
           name="TempCorrLength"

@@ -74,4 +74,10 @@ export const modalContent: ModalContentType = {
       'MAX PULL: tension at surface required to pull indicated percentage of weak point. No safety factor applied at this calculation',
     ],
   },
+  csgSpecs: {
+    title: 'Casing Specs Help',
+    content: [
+      'API Casing Specs The API (American Petroleum Institute) casing sizes are standard measurements used in the oil and gas industry to specify the diameter and wall thickness of casings. These sizes are essential for ensuring compatibility and proper functioning of wellbore equipment',
+    ],
+  },
 };
