@@ -24,6 +24,12 @@ export default function QuestionModal({
   // if no prop, then 'SORRY, NO CONTENT' in title and in content section
   // create a button with touchable opacity at the corner of the screen
   //  which will be closing the modal
+
+  const renderTitle = (): string => {
+    const title = modalContent[modalContentKey]?.title;
+    return title !== undefined ? title : 'Sorry, no content';
+  };
+
   return (
     <TouchableOpacity onPress={() => setIsModalVisible(!isModalVisible)}>
       <AntDesign name="questioncircleo" size={24} color="white" />
@@ -35,9 +41,7 @@ export default function QuestionModal({
       >
         <TouchableHighlight onPress={() => setIsModalVisible(!isModalVisible)}>
           <ScrollView style={container}>
-            <Text style={[standardText, header]}>
-              {modalContent[modalContentKey]?.title}
-            </Text>
+            <Text style={[standardText, header]}>{renderTitle()}</Text>
             {modalContent[modalContentKey]?.content.map((text) => (
               <Text key={text.substring(0, 15)} style={[standardText, content]}>
                 {text}

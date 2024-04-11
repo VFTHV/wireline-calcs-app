@@ -126,7 +126,12 @@ export default function Navigation() {
         <Stack.Screen
           name="Feedback"
           component={Pages.Feedback}
-          options={{ ...stackScreenOptions }}
+          options={{
+            ...stackScreenOptions,
+            headerRight: (props) => (
+              <QuestionModal modalContentKey="feedback" />
+            ),
+          }}
         />
         <Stack.Screen
           name="Disclaimer"
