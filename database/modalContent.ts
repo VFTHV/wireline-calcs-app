@@ -99,4 +99,12 @@ export const modalContent: ModalContentType = {
       'Disclaimer: Please note that calculated values are approximate, since the actual Travel Time may vary depending on tool characteristics, ambient temperature and pressure',
     ],
   },
+  fluidVelocity: {
+    title: 'Fluid Velocity Help',
+    content: [
+      'Purpose: Figure out fluid velocity in certain casing diameters and pump rates. This is helpful if you want to determine what would be your wireline speed while pumping down',
+      'Step 1. Choose casing type you are running in',
+      'Step 2. Set intended pumping rate',
+    ],
+  },
 };

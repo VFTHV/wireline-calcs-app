@@ -115,7 +115,13 @@ export default function Navigation() {
         <Stack.Screen
           name="FluidVelocity"
           component={Pages.FluidVelocity}
-          options={{ ...stackScreenOptions, title: 'Fluid Velocity' }}
+          options={{
+            ...stackScreenOptions,
+            title: 'Fluid Velocity',
+            headerRight: (props) => (
+              <QuestionModal modalContentKey="fluidVelocity" />
+            ),
+          }}
         />
         <Stack.Screen
           name="Feedback"
