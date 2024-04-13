@@ -8,7 +8,7 @@ import { pickerStyles } from '../styles/global';
 export default function CableSelector() {
   const dispatch = useDispatch();
   const { currentCable } = useSelector((state: StoreState) => state.weakPoint);
-
+  // pickerview style
   const handleCableChange = (itemValue: string) => {
     const selectedCable = cablesData.find((cable) => cable.type === itemValue);
     if (selectedCable) {
