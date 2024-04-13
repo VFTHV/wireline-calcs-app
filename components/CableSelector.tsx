@@ -11,6 +11,7 @@ export default function CableSelector() {
   // pickerview style
   // pickerview style
   // pickerview style
+  // pickerview style
   const handleCableChange = (itemValue: string) => {
     const selectedCable = cablesData.find((cable) => cable.type === itemValue);
     if (selectedCable) {
