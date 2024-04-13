@@ -10,6 +10,7 @@ export default function CableSelector() {
   const { currentCable } = useSelector((state: StoreState) => state.weakPoint);
   // pickerview style
   // pickerview style
+  // pickerview style
   const handleCableChange = (itemValue: string) => {
     const selectedCable = cablesData.find((cable) => cable.type === itemValue);
     if (selectedCable) {
