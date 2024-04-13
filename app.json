@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "26_wireline_calcs_app",
-    "slug": "26_wireline_calcs_app",
+    "name": "Wireline Calcs",
+    "slug": "wirelineCalcs",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -11,7 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -34,6 +36,11 @@
           ]
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "365e8d46-862c-42fd-b34c-c30b549bfc57"
+      }
+    }
   }
 }
