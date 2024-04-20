@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import React, { useState } from 'react';
 import { pickerStyles, styleVariables as st } from '../styles/global';
 import { Picker } from '@react-native-picker/picker';
+import customFetch from '../apis/axios';
 
 const issueNames = [
   '',
@@ -17,6 +18,20 @@ export default function Feedback() {
   const [name, setName] = useState('');
   const [issue, setIssue] = useState('');
   const [description, setDescription] = useState('');
+
+  const onSubmit = async () => {
+    console.log('submitting');
+    try {
+      const response = await customFetch.post('/', {
+        name,
+        issue,
+        description,
+      });
+      console.log(response);
+    } catch (error) {
+      console.log({ error: error });
+    }
+  };
 
   return (
     <>
@@ -57,7 +72,7 @@ export default function Feedback() {
           />
         </View>
       </View>
-      <Button title="Submit" onPress={() => console.log('pressed')} />
+      <Button title="Submit" onPress={onSubmit} />
     </>
   );
 }
