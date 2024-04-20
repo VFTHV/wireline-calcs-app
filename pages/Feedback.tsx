@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import React, { useState } from 'react';
 import { pickerStyles, styleVariables as st } from '../styles/global';
 import { Picker } from '@react-native-picker/picker';
@@ -57,6 +57,7 @@ export default function Feedback() {
           />
         </View>
       </View>
+      <Button title="Submit" onPress={() => console.log('pressed')} />
     </>
   );
 }
