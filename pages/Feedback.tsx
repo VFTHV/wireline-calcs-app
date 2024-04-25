@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { pickerStyles, styleVariables as st } from '../styles/global';
 import { Picker } from '@react-native-picker/picker';
 import customFetch from '../apis/axios';
+import { AxiosError } from 'axios';
 
 const issueNames = [
   '',
@@ -22,14 +23,23 @@ export default function Feedback() {
   const onSubmit = async () => {
     console.log('submitting');
     try {
-      const response = await customFetch.post('/', {
+      const response = await customFetch.post('api/v1/form', {
         name,
         issue,
         description,
       });
-      console.log(response);
+      console.log(response.data);
     } catch (error) {
-      console.log({ error: error });
+      if (error.isAxiosError) {
+        // Type assertion for AxiosError
+        const axiosError = error as AxiosError;
+        console.log('Axios Error:', axiosError.message);
+        console.log('Response Data:', axiosError.response?.data);
+        console.log('Response Status:', axiosError.response?.status);
+      } else {
+        // Handle non-Axios errors
+        console.log('Non-Axios Error:', error);
+      }
     }
   };
 
