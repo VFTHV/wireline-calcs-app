@@ -34,17 +34,12 @@ export default function Feedback() {
   const [description, setDescription] = useState('');
 
   const onSubmit = async () => {
-    console.log('submitting');
     try {
       const response: AxiosResponse<SuccessResponse> = await customFetch.post(
         'api/v1/form',
-        {
-          name,
-          issue,
-          description,
-        }
+        { name, issue, description }
       );
-      console.log(response.data);
+
       Toast.show({
         type: 'success',
         text1: response.data.msg,
@@ -60,7 +55,10 @@ export default function Feedback() {
         });
       } else {
         // Handle non-Axios errors
-        console.log('Non-Axios Error:', error);
+        Toast.show({
+          type: 'error',
+          text1: 'Problem with form. Try again later',
+        });
       }
     }
   };
