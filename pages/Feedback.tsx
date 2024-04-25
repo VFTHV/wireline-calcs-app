@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { pickerStyles, styleVariables as st } from '../styles/global';
 import { Picker } from '@react-native-picker/picker';
 import customFetch from '../apis/axios';
-import { AxiosError } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import Toast from 'react-native-toast-message';
 
 const issueNames = [
@@ -16,6 +16,18 @@ const issueNames = [
   'Temp. Corrected Length',
 ];
 
+type ErrorResponse = {
+  statusCode: string;
+  msg: string;
+};
+
+type SuccessResponse = {
+  name: string;
+  issue: string;
+  description: string;
+  msg: string;
+};
+
 export default function Feedback() {
   const [name, setName] = useState('');
   const [issue, setIssue] = useState('');
@@ -24,22 +36,27 @@ export default function Feedback() {
   const onSubmit = async () => {
     console.log('submitting');
     try {
-      const response = await customFetch.post('api/v1/form', {
-        name,
-        issue,
-        description,
-      });
+      const response: AxiosResponse<SuccessResponse> = await customFetch.post(
+        'api/v1/form',
+        {
+          name,
+          issue,
+          description,
+        }
+      );
       console.log(response.data);
-    } catch (error) {
+      Toast.show({
+        type: 'success',
+        text1: response.data.msg,
+      });
+    } catch (error: any) {
       if (error.isAxiosError) {
         const axiosError = error as AxiosError;
-        console.log('Axios Error:', axiosError.message);
-        console.log('Response Data:', axiosError.response?.data);
-        console.log('Response Status:', axiosError.response?.status);
+        const responseData = axiosError.response?.data as ErrorResponse;
+
         Toast.show({
           type: 'error',
-          text1:
-            (axiosError.response?.data.msg as string) || 'Problem with form',
+          text1: responseData.msg || axiosError.message || 'Problem with form',
         });
       } else {
         // Handle non-Axios errors
