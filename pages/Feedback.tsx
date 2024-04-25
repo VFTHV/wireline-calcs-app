@@ -4,6 +4,7 @@ import { pickerStyles, styleVariables as st } from '../styles/global';
 import { Picker } from '@react-native-picker/picker';
 import customFetch from '../apis/axios';
 import { AxiosError } from 'axios';
+import Toast from 'react-native-toast-message';
 
 const issueNames = [
   '',
@@ -31,11 +32,15 @@ export default function Feedback() {
       console.log(response.data);
     } catch (error) {
       if (error.isAxiosError) {
-        // Type assertion for AxiosError
         const axiosError = error as AxiosError;
         console.log('Axios Error:', axiosError.message);
         console.log('Response Data:', axiosError.response?.data);
         console.log('Response Status:', axiosError.response?.status);
+        Toast.show({
+          type: 'error',
+          text1:
+            (axiosError.response?.data.msg as string) || 'Problem with form',
+        });
       } else {
         // Handle non-Axios errors
         console.log('Non-Axios Error:', error);
