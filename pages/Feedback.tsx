@@ -50,9 +50,9 @@ export default function Feedback() {
       );
 
       Toast.show({ type: 'success', text1: response.data.msg });
-      setName('');
-      setIssue('');
-      setDescription('');
+      // setName('');
+      // setIssue('');
+      // setDescription('');
       setSubmitted(false);
       setIsLoading(false);
     } catch (error: any) {
@@ -62,7 +62,8 @@ export default function Feedback() {
 
         Toast.show({
           type: 'error',
-          text1: responseData.msg || axiosError.message || 'Problem with form',
+          text1:
+            responseData?.msg || axiosError?.message || 'Problem with form',
         });
         setIsLoading(false);
       } else {
@@ -75,7 +76,7 @@ export default function Feedback() {
       }
     }
   };
-
+  isLoading && setIsLoading(false);
   return (
     <>
       <View style={inputGroup}>
@@ -118,7 +119,7 @@ export default function Feedback() {
           />
         </View>
       </View>
-      <View style={labelText}>
+      <View style={button}>
         <Button title="Submit" disabled={isLoading} onPress={onSubmit} />
       </View>
     </>
@@ -134,6 +135,7 @@ const {
   inputItem,
   inputItemMultiline,
   errorBorder,
+  button,
 } = StyleSheet.create({
   inputGroup: {
     marginHorizontal: st.spacingDefault,
@@ -174,5 +176,9 @@ const {
   errorBorder: {
     borderWidth: 1,
     borderColor: 'red',
+  },
+  button: {
+    marginHorizontal: st.spacingDefault,
+    alignItems: 'flex-start',
   },
 });
