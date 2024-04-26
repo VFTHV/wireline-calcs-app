@@ -32,18 +32,29 @@ export default function Feedback() {
   const [name, setName] = useState('');
   const [issue, setIssue] = useState('');
   const [description, setDescription] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async () => {
+    setIsLoading(true);
+    setSubmitted(true);
+    if (!name || !issue || !description) {
+      Toast.show({ type: 'error', text1: 'Please fill out all fields' });
+      setIsLoading(false);
+      return;
+    }
     try {
       const response: AxiosResponse<SuccessResponse> = await customFetch.post(
         'api/v1/form',
         { name, issue, description }
       );
 
-      Toast.show({
-        type: 'success',
-        text1: response.data.msg,
-      });
+      Toast.show({ type: 'success', text1: response.data.msg });
+      setName('');
+      setIssue('');
+      setDescription('');
+      setSubmitted(false);
+      setIsLoading(false);
     } catch (error: any) {
       if (error.isAxiosError) {
         const axiosError = error as AxiosError;
@@ -53,12 +64,14 @@ export default function Feedback() {
           type: 'error',
           text1: responseData.msg || axiosError.message || 'Problem with form',
         });
+        setIsLoading(false);
       } else {
         // Handle non-Axios errors
         Toast.show({
           type: 'error',
           text1: 'Problem with form. Try again later',
         });
+        setIsLoading(false);
       }
     }
   };
@@ -69,7 +82,7 @@ export default function Feedback() {
         <Text style={labelText}>Your Name:</Text>
         <View style={inputValues}>
           <TextInput
-            style={inputItem}
+            style={[inputItem, !name && submitted ? errorBorder : []]}
             value={name}
             onChangeText={(val) => setName(val)}
             placeholder="John Smith"
@@ -78,7 +91,7 @@ export default function Feedback() {
       </View>
       <View style={inputGroupPicker}>
         <Text style={text}>Choose Cable Type:</Text>
-        <View style={pickerView}>
+        <View style={[pickerView, !issue && submitted ? errorBorder : []]}>
           <Picker selectedValue={issue} onValueChange={(val) => setIssue(val)}>
             {issueNames.map((issue) => (
               <Picker.Item
@@ -93,7 +106,10 @@ export default function Feedback() {
       <View style={inputGroup}>
         <View style={inputValues}>
           <TextInput
-            style={inputItemMultiline}
+            style={[
+              inputItemMultiline,
+              !description && submitted ? errorBorder : [],
+            ]}
             value={description}
             onChangeText={(val) => setDescription(val)}
             placeholder="Problem or Suggestion"
@@ -102,49 +118,61 @@ export default function Feedback() {
           />
         </View>
       </View>
-      <Button title="Submit" onPress={onSubmit} />
+      <View style={labelText}>
+        <Button title="Submit" disabled={isLoading} onPress={onSubmit} />
+      </View>
     </>
   );
 }
 
 const { text, inputGroup: inputGroupPicker, pickerView } = pickerStyles;
 
-const { inputGroup, labelText, inputValues, inputItem, inputItemMultiline } =
-  StyleSheet.create({
-    inputGroup: {
-      marginHorizontal: st.spacingDefault,
-      marginVertical: st.spacingDefault / 2,
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    labelText: {
-      fontFamily: 'Outfit-Light',
-      color: st.secondaryColor,
-      fontSize: st.fontSizePri,
-    },
-    inputValues: {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      gap: 5,
-    },
-    inputItem: {
-      flex: 1,
-      height: 32,
-      backgroundColor: 'white',
-      textAlign: 'left',
-      paddingLeft: 5,
-      fontFamily: 'Outfit-Light',
-      borderRadius: 5,
-    },
-    inputItemMultiline: {
-      flex: 1,
-      minHeight: 32,
-      backgroundColor: 'white',
-      textAlign: 'left',
-      textAlignVertical: 'top',
-      padding: 5,
-      fontFamily: 'Outfit-Light',
-      borderRadius: 5,
-    },
-  });
+const {
+  inputGroup,
+  labelText,
+  inputValues,
+  inputItem,
+  inputItemMultiline,
+  errorBorder,
+} = StyleSheet.create({
+  inputGroup: {
+    marginHorizontal: st.spacingDefault,
+    marginVertical: st.spacingDefault / 2,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  labelText: {
+    fontFamily: 'Outfit-Light',
+    color: st.secondaryColor,
+    fontSize: st.fontSizePri,
+  },
+  inputValues: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+  },
+  inputItem: {
+    flex: 1,
+    height: 32,
+    backgroundColor: 'white',
+    textAlign: 'left',
+    paddingLeft: 5,
+    fontFamily: 'Outfit-Light',
+    borderRadius: 5,
+  },
+  inputItemMultiline: {
+    flex: 1,
+    minHeight: 32,
+    backgroundColor: 'white',
+    textAlign: 'left',
+    textAlignVertical: 'top',
+    padding: 5,
+    fontFamily: 'Outfit-Light',
+    borderRadius: 5,
+  },
+  errorBorder: {
+    borderWidth: 1,
+    borderColor: 'red',
+  },
+});
