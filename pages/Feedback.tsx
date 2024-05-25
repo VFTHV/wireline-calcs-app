@@ -15,7 +15,7 @@ const issueNames = [
   'Casing/Tubing Specs',
   'Temp. Corrected Length',
 ];
-
+// issueNames array
 type ErrorResponse = {
   statusCode: string;
   msg: string;
