@@ -16,6 +16,7 @@ const issueNames = [
   'Temp. Corrected Length',
 ];
 // issueNames array
+// issueNames array
 type ErrorResponse = {
   statusCode: string;
   msg: string;
