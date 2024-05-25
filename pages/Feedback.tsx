@@ -15,14 +15,7 @@ const issueNames = [
   'Casing/Tubing Specs',
   'Temp. Corrected Length',
 ];
-// issueNames array
-// issueNames array
-// issueNames array
-// issueNames array
-// issueNames array
-// issueNames array
-// issueNames array
-// issueNames array
+
 type ErrorResponse = {
   statusCode: string;
   msg: string;
