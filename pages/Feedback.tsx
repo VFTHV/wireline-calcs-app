@@ -18,6 +18,7 @@ const issueNames = [
 // issueNames array
 // issueNames array
 // issueNames array
+// issueNames array
 type ErrorResponse = {
   statusCode: string;
   msg: string;
