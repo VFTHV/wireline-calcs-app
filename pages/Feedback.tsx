@@ -24,6 +24,7 @@ type ErrorResponse = {
 // ErrorResponseType
 // ErrorResponseType
 // ErrorResponseType
+// ErrorResponseType
 
 type SuccessResponse = {
   name: string;
