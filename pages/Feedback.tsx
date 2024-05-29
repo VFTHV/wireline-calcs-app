@@ -20,16 +20,6 @@ type ErrorResponse = {
   statusCode: string;
   msg: string;
 };
-// ErrorResponseType
-// ErrorResponseType
-// ErrorResponseType
-// ErrorResponseType
-// ErrorResponseType
-// ErrorResponseType
-// ErrorResponseType
-// ErrorResponseType
-// ErrorResponseType
-// ErrorResponseType
 
 type SuccessResponse = {
   name: string;
