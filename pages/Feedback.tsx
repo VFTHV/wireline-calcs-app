@@ -21,6 +21,8 @@ type ErrorResponse = {
   msg: string;
 };
 // ErrorResponseType
+// ErrorResponseType
+// ErrorResponseType
 
 type SuccessResponse = {
   name: string;
