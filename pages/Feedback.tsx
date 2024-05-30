@@ -27,16 +27,6 @@ type SuccessResponse = {
   description: string;
   msg: string;
 };
-// SuccessResponseType
-// SuccessResponseType
-// SuccessResponseType
-// SuccessResponseType
-// SuccessResponseType
-// SuccessResponseType
-// SuccessResponseType
-// SuccessResponseType
-// SuccessResponseType
-// SuccessResponseType
 
 export default function Feedback() {
   const [name, setName] = useState('');
