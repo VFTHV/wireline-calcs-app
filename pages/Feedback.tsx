@@ -30,6 +30,7 @@ type SuccessResponse = {
 
 export default function Feedback() {
   const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [issue, setIssue] = useState('');
   const [description, setDescription] = useState('');
   const [submitted, setSubmitted] = useState(false);
@@ -38,23 +39,31 @@ export default function Feedback() {
   const onSubmit = async () => {
     setIsLoading(true);
     setSubmitted(true);
-    if (!name || !issue || !description) {
-      Toast.show({ type: 'error', text1: 'Please fill out all fields' });
+    if (!name || !email || !issue || !description) {
+      Toast.show({ type: 'error', text1: 'Fill out all fields' });
       setIsLoading(false);
       return;
     }
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const isValidEmail = emailRegex.test(email);
+    if (!isValidEmail) {
+      Toast.show({ type: 'error', text1: 'Provide correct email' });
+      setIsLoading(false);
+      return;
+    }
+
     try {
       const response: AxiosResponse<SuccessResponse> = await customFetch.post(
-        'api/v1/form',
+        '/',
         { name, issue, description }
       );
 
-      Toast.show({ type: 'success', text1: response.data.msg });
-      // setName('');
-      // setIssue('');
-      // setDescription('');
+      Toast.show({ type: 'success', text1: 'Form submitted successfully' });
+
       setSubmitted(false);
       setIsLoading(false);
+      setName('');
+      setIssue('');
     } catch (error: any) {
       if (error.isAxiosError) {
         const axiosError = error as AxiosError;
@@ -87,6 +96,17 @@ export default function Feedback() {
             value={name}
             onChangeText={(val) => setName(val)}
             placeholder="John Smith"
+          />
+        </View>
+      </View>
+      <View style={inputGroup}>
+        <Text style={labelText}>Your Email:</Text>
+        <View style={inputValues}>
+          <TextInput
+            style={[inputItem, !email && submitted ? errorBorder : []]}
+            value={email}
+            onChangeText={(val) => setEmail(val)}
+            placeholder="john@gmail.com"
           />
         </View>
       </View>
