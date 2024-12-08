@@ -23,6 +23,7 @@ export default function CableSelector() {
         <Picker
           selectedValue={currentCable.type}
           onValueChange={handleCableChange}
+          mode="dropdown"
         >
           {cablesData.map((cable) => {
             return (

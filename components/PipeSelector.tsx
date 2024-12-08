@@ -42,6 +42,7 @@ export const PipeSelector = ({ pipeData, typeId }: PipeSelectorProps) => {
         <Picker
           selectedValue={nom}
           onValueChange={(value: string) => setNom(value)}
+          mode="dropdown"
         >
           <Picker.Item
             value={`Choose ${pipeWord} OD`}
@@ -58,6 +59,7 @@ export const PipeSelector = ({ pipeData, typeId }: PipeSelectorProps) => {
         <Picker
           selectedValue={weight}
           onValueChange={(value: number) => setWeight(+value)}
+          mode="dropdown"
         >
           <Picker.Item value={null} label={`Choose ${pipeWord} Weight PPF`} />
           {pipeWeights.map((weight) => {
