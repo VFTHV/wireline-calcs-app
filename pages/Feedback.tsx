@@ -63,7 +63,9 @@ export default function Feedback() {
       setSubmitted(false);
       setIsLoading(false);
       setName('');
+      setEmail('');
       setIssue('');
+      setDescription('');
     } catch (error: any) {
       if (error.isAxiosError) {
         const axiosError = error as AxiosError;
